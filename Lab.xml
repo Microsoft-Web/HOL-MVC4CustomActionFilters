@@ -4,7 +4,7 @@
   <Author>
     <Name>.</Name>
   </Author>
-  <Description>In ASP.NET MVC 4 Global, Dynamic Filters Hands-on Lab, you have been adding filters to MVC processing. In this Hands-on Lab, you will use custom filters to log your site activity. To achieve that, in the proposed exercise you will create a custom filter attribute that will work with any specified controller. That filter will catch controller's requests, and save them into a database table. Through a log view you will be able to see the list of visits that each filtered controller had</Description>  
+  <Description>In this Hands-on Lab, you will use custom filters to log your site activity. To achieve that, in the proposed exercise you will create a custom filter attribute that will work with any specified controller. That filter will catch controller's requests, and save them into a database table. Through a log view you will be able to see the list of visits that each filtered controller had</Description>  
   <Document ConversionType="Html">.\HOL.md</Document>
   <Title>ASP.NET MVC 4 Custom Action Filters</Title>
   <Version>2.0.0</Version>

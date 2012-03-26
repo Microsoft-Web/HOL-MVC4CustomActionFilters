@@ -1,122 +1,261 @@
-﻿<a name="HOLTop" />
-# Hands-on Lab's Title #
+﻿# ASP.NET MVC Custom Action Filter #
 ---
 
-<a name="Overview" />
 ## Overview ##
-(TODO: Include a 1-2 paragraph description of what a user will accomplish in this HOL)
 
-<a name="Objectives" />
+>**Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC.** If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC Fundamentals** Hand-on Lab.
+
+ASP.NET MVC provides Action Filters for performing logic either before an action method is called or after its run. Action Filters are custom attributes that provide a declarative means to add pre-action and post-action behavior to controller action methods.
+
+In this Hands-on Lab you will create a custom action filter attribute into MVC Music Store solution to catch controller's requests and log site actvity into a database table. You will be able to add your logging filter by injection to any controller or action.  Finally, you will see the log view that shows a visit list.
+
 ### Objectives ###
 
 In this Hands-On Lab, you will learn how to:
 
-(TODO: Insert bullets describing what the user will accomplish in this HOL)
+- Create a custom action filter attribute to extend filtering capabilities
 
-- (TODO: objective 1)
-- (TODO: objective 2)
-- (TODO: objective 3)
+- Apply a custom filter attribute by injection to a specific level
 
-<a name="SystemRequirements" />
+ 
 ### System Requirements ###
 
 You must have the following items to complete this lab:
 
-(TODO: list the requirements with links to the download or install the bits as appropriate)
+- Visual Studio 11 Express Beta for Web
 
-- (TODO: prerequisite 1)
-- (TODO: prerequisite 2)
-- (TODO: prerequisite 3)
+	>**Note:** You can install the previous system requirements by using the Web Platform Installer 4.0:  http://www.microsoft.com/web/gallery/install.aspx?appid=VWD11_BETA&prerelease=true.
 
-<a name="Setup" />
+ 
 ### Setup ###
-(TODO:  Customize the setup section with the required steps)
 
-In order to execute the exercises in this hands-on lab you need to set up your environment.
+_**Installing Code Snippets**_
 
-1. (TODO: step 1)
-1. (TODO: step 2)
-1. (TODO: step 3)
+For convenience, much of the code you will be managing along this lab is available as Visual Studio code snippets. To install the code snippets run **.\Source\Assets\CodeSnippets.vsi** file.
 
-
-> **Note:** Make sure you have checked all the dependencies for this lab before running the setup.
-
-<a name="UsingCodeSnippets" />
-### Using the Code Snippets ###
-(Remove the code snippets section if your Lab does not include them)
-
-Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of that code is provided as Visual Studio Code Snippets, which you can use from within Visual Studio 2010 to avoid having to add it manually. 
-
----
-
-<a name="Exercises" />
+ 
 ## Exercises ##
-The following exercises make up this Hands-On Lab:
 
-1.	[(TODO: Exercise 1 - Name)](#Exercise1)
-1.	[(TODO: Exercise 2 - Name)](#Exercise2)
+This Hands-On Lab is comprised by the following exercises:
 
+1. Exercise 1: Logging actions
 
+ 
+Estimated time to complete this lab: 20 minutes.
 
-> **Note:** Each exercise is accompanied by a starting solution. These solutions are missing some code sections that are completed through each exercise and therefore will not necessarily work if running them directly.
-Inside each exercise you will also find an end folder where you find the resulting solution you should obtain after completing the exercises. You can use this solution as a guide if you need additional help working through the exercises.
+>**Note:** Each exercise is accompanied by an **End** folder containing the resulting solution you should obtain after completing the exercises. You can use this solution as a guide if you need additional help working through the exercises.
+ 
+### Next Step ###
 
-Estimated time to complete this lab: **(TODO: insert estimated time)**
+Click here to enter text.
+### Exercise 1: Logging Actions ###
 
-<a name="Exercise1" />
-### Exercise 1: (TODO: Exercise 1 - Name) ###
+In this exercise, you will learn how to create a custom action log filter by using MVC3 Filter Providers.  For that purpose you will apply a logging filter to the MusicStore site that will record all the activities in the selected controllers.
 
-(TODO: Write Exercise introduction here)
+The filter will extend **ActionFilterAttributeClass** and override **OnActionExecuting** method to catch each request and then perform the logging actions. The context information about HTTP requests, executing methods, results and parameters will be provided by MVC **ActionExecutingContext** class**.**
 
-Example:  
+### About MVC Music Store Application logging feature ###
 
-In the first exercise you will familiarize with ACS’ basic settings and terminology. Your task is to secure access to a newly created ASP.NET Web site. The Web site will accept users from Google, Yahoo! and Windows Live ID. As you will see in a minute, ACS makes it real easy.
+This Music Store solution has a new data model table for site logging, **ActionLog**, with the following fields: Name of the controller that received a request, Called action, Client IP and Time stamp.
 
-<a name="Ex1Task1" />
-#### Task 1 – (TODO: Task Description) ####
+ ![Data model. ActionLog table.](./images/Data-model.-ActionLog-table..png?raw=true "Data model. ActionLog table.")
+ 
+_Data model. ActionLog table._
 
-(TODO: Write a task introduction)
+The solution provides an MVC View for the Action log that can be found at **MvcMusicStores/Views/ActionLog**:
 
-1. (TODO: Write step 1) 
+ ![Action Log view](./images/Action-Log-view.png?raw=true "Action Log view")
+ 
+_Action Log view_
 
-    ![alt text here](./images/myimage.png?raw=true "title image here")
+With this given structure, all the work will be focused on interrupting controller's request and performing the logging by using custom filtering.
 
-	_Image Caption_
+#### Task 1 - Creating a Custom Filter to Catch a Controller's Request ####
 
-1. (TODO: Write step 2) 
-1. (TODO: Write step 3) 
+In this task you will create a custom filter attribute class that will contain the logging logic. For that purpose you will extend MVC **ActionFilterAttribute** Class and implement the interface **IActionFilter**.
 
-<a name="Exercise2"></a>
-###Exercise 2: (TODO: Exercise 2 - Name)###
+> **Note: ActionFilterAttribute** is the base class for all the attribute filters. It provides the following methods to execute a specific logic after and before controller action's execution:**- OnActionExecuting(ActionExecutedContext** filterContext**)**
 
-(TODO: Write Exercise introduction here)
+> Just before the action method is called**- OnActionExecuted(ActionExecutingContext** filterContext**):** 
 
-<a name="Ex2Task1" />
-#### Task 1 – (TODO: Task Description) ####
+> After the action method is called and before the result is executed (before view render).
 
-(TODO: Write a task introduction)
+> **- OnResultExecuting(ResultExecutingContext** filterContext**):** 
 
-1. (TODO: Write step 1) 
+> Just before the result is executed (before view render).
 
-	| **ColHeader1** | **ColHeader2** |
-	|----------------|----------------|
-	| Field1         | Field2         |
-	| Field3         | Field4         |
-	| Field5         | Field6         |
+> **- OnResultExecuted(ResultExecutedContext** filterContext**):** 
 
+> After the result is executed (after the view is rendered).
 
----
+> By overriding any of these methods into a derived class, you can execute your own filtering code.
 
-<a name="Summary" />
+1. Open the begin solution **MvcMusicStore.sln** at **Source\Ex01-Logging Actions\Begin**
+
+1. Create a new folder **Filters** at project root, which will include all the custom filters. 
+
+1. Add a new C# class into the **Filters** folder and rename it to **ActionLogFilterAttribute.cs**
+
+1. Open **ActionLogFilterAttribute.cs** and add a reference to **System.Web.Mvc** and the **MvcMusicStore.Models** namespace:
+
+	````C#
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Web;
+	using System.Web.Mvc;
+	using MvcMusicStore.Models;
+	````
+
+1. Inherit the **ActionLogFilterAttribute** class from **ActionFilterAttribute** and then make **ActionLogFilterAttribute** class implement **IActionFilter** interface.
+
+	````C#
+	...
+	namespace MvcMusicStore.Filters
+	{
+	    public class ActionLogFilterAttribute : **ActionFilterAttribute**, **IActionFilter**
+	    {
+	        ...
+	````
+
+1. Make **ActionLogFilterAttribute** class override the method **OnActionExecuting,** where you will write the logging code. After that, your class should look like the following:
+
+	_(Code Snippet - ASP.NET MVC 4 Custom Action Filters - Ex1 Logging Actions - CSharp)_
+
+	````C#
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Web;
+	using System.Web.Mvc;
+	using MvcMusicStore.Models;
+	
+	namespace MvcMusicStore.Filters
+	{
+	    public class ActionLogFilterAttribute : ActionFilterAttribute, IActionFilter
+	    {
+	        public override void OnActionExecuting(ActionExecutingContext filterContext)
+	        {
+	            MusicStoreEntities storeDB = new MusicStoreEntities();
+	
+	            ActionLog log = new ActionLog()
+	            {
+	                Controller = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
+	                Action = filterContext.ActionDescriptor.ActionName,
+	                IP = filterContext.HttpContext.Request.UserHostAddress,
+	                DateTime = filterContext.HttpContext.Timestamp
+	            };
+	
+	            storeDB.AddToActionLogs(log);
+	            storeDB.SaveChanges();
+	
+	            base.OnActionExecuting(filterContext);
+	        }
+	    }
+	}
+	````
+
+	> **Note:**  **OnActionExecuting** method is using **Entity Framework** to add a new ActionLog register.  It creates and fills a new entity instance with the context information from **filterContext**. 
+
+	> You could read more about **ControllerContext** class at [msdn](http://msdn.microsoft.com/en-us/library/system.web.mvc.controllercontext.aspx).
+
+ 
+#### Task 2 - Injecting a Code Interceptor into the Store Controller Class ####
+
+In this task you will add the custom filter by injecting it to all controller classes and controller actions that will be logged. For the purpose of this exercise, the Store Controller class will have a log.
+
+The method **OnActionExecuting** from **ActionLogFilterAttribute** custom filter runs when an injected element is called.
+
+It is also possible to intercept a specific controller method.
+
+1. Open the **StoreController** at **MvcMusicStore\Controllers** and add a reference to the **Filters** namespace:
+
+	````C#
+	...
+	using MvcMusicStore.ViewModels;
+	using MvcMusicStore.Models;
+	using MvcMusicStore.Filters;
+	
+	namespace MvcMusicStore.Controllers
+	{
+	...
+	````
+
+1. Inject the custom filter **ActionLogFilter** into **StoreController** class. 
+
+	````C#
+	...
+	using MvcMusicStore.ViewModels;
+	using MvcMusicStore.Models;
+	using MvcMusicStore.Filters;
+	
+	namespace MvcMusicStore.Controllers
+	{
+	    [ActionLogFilter]
+	    public class StoreController : Controller
+	    {
+	        MusicStoreEntities storeDB = new MusicStoreEntities();
+	        //
+	        // GET: /Store/
+	
+	        public ActionResult Index()
+	        {
+	            // Create list of genres
+	...
+	````
+
+	> **Note:** When a filter is injected into a controller class, all its actions are also injected. If you would like to apply the filter only for a set of actions, you would have to inject **[ActionLogFilter]** to each one of them:**[ActionLogFilter]**
+
+	>     public ActionResult Index()
+
+	>     {
+
+	>        ...
+
+	>     }
+
+	>     ...
+
+	> **[ActionLogFilter]**
+
+	>     public ActionResult Browse(string genre)
+
+	>     {
+
+	>     ...
+
+	>     }
+
+ 
+#### Task 3 - Running the Application ####
+
+In this task, you will test that the logging filter is working. You will start the application and visit the store, and then you will check logged activities.
+
+1. Press **F5** to run the application.
+
+1. Browse to **/ActionLog** to see log view initial state:
+
+ 	![Log tracker status before page activity](./images/Log-tracker-status-before-page-activity.png?raw=true "Log tracker status before page activity")
+ 
+	_Log tracker status before page activity_
+
+1. Browse to **/Store** and perform some actions there, like browsing an album detail.
+
+1. Browse to **/ActionLog** and if the log is empty press **F5** to refresh the page. Check that your visits were tracked:
+
+ 	![Action log with activity logged](./images/Action-log-with-activity-logged.png?raw=true "Action log with activity logged")
+ 
+	_Action log with activity logged_
+
+ 
+### Next Step ###
+
+Summary
+ 
 ## Summary ##
-By completing this Hands-On Lab you have learned how to:
 
- - (TODO: outcome 1)
- - (TODO: outcome 2)
- - (TODO: outcome 3)
+By completing this Hands-On Lab you have learned how to extend an action filter to execute custom actions. You have also learned how to inject any filter to your page controllers. The following concepts were used:
 
----
+- How to create Custom Action filters with MVC ActionFilterAttribute class
 
-<a name="Appendix" />
-##Appendix##
-(TODO: Write Appendix content here)
+- How to inject filters into MVC controllers

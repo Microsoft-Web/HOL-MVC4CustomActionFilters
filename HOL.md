@@ -7,7 +7,7 @@
 
 ASP.NET MVC provides Action Filters for performing logic either before an action method is called or after its run. Action Filters are custom attributes that provide a declarative means to add pre-action and post-action behavior to controller action methods.
 
-In this Hands-on Lab you will create a custom action filter attribute into MVC Music Store solution to catch controller's requests and log site actvity into a database table. You will be able to add your logging filter by injection to any controller or action.  Finally, you will see the log view that shows a visit list.
+In this Hands-on Lab you will create a custom action filter attribute into MVC Music Store solution to catch controller's requests and log site activity into a database table. You will be able to add your logging filter by injection to any controller or action.  Finally, you will see the log view that shows a visit list.
 
 > **Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC.** If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC Fundamentals** Hand-on Lab.
 
@@ -92,9 +92,9 @@ In this task you will create a custom filter attribute class that will contain t
 > **Note:** The **ActionFilterAttribute** is the base class for all the attribute filters. It provides the following methods to execute a specific logic after and before controller action's execution:
 >
 >- **OnActionExecuting**(ActionExecutedContext filterContext): Just before the action method is called.
->- **OnActionExecuted**(ActionExecutingContext filterContext**): After the action method is called and before the result is executed (before view render).
+>- **OnActionExecuted**(ActionExecutingContext filterContext): After the action method is called and before the result is executed (before view render).
 >- **OnResultExecuting**(ResultExecutingContext filterContext): Just before the result is executed (before view render).
->- **OnResultExecuted**(ResultExecutedContext filterContext**): After the result is executed (after the view is rendered).
+>- **OnResultExecuted**(ResultExecutedContext filterContext): After the result is executed (after the view is rendered).
 >
 > By overriding any of these methods into a derived class, you can execute your own filtering code.
 
@@ -120,7 +120,7 @@ In this task you will create a custom filter attribute class that will contain t
 
 1. Open **CustomActionFilter.cs** and add a reference to **System.Web.Mvc** and the **MvcMusicStore.Models** namespace:
 
-	(Code Snippet - _MVC4 Custom Action Filters - Ex1-CustomActionFilterNamespaces_ - CS)
+	(Code Snippet - _MVC4 Custom Action Filters - Ex1-CustomActionFilterNamespaces_)
 
 	<!-- mark:5-6 -->
 	````C#
@@ -146,7 +146,7 @@ In this task you will create a custom filter attribute class that will contain t
 
 1. Make **CustomActionFilter** class override the method **OnActionExecuting** and add the necessary logic to log the filter's execution. To do this, add the following highlighted code within **CustomActionFilter** class.
 
-	(Code Snippet - _MVC4 Custom Action Filters - Ex1-LoggingActions - CS)
+	(Code Snippet - _MVC4 Custom Action Filters - Ex1-LoggingActions_)
 
 	<!-- mark:6-26 -->
 	````C#	
@@ -283,7 +283,7 @@ In this task, you will test that the logging filter is working. You will start t
 <a name="Exercise2" />
 ### Exercise 2: Managing Multiple Action Filters ###
 
-In this exercise you will add a second Custom Action Filter to the StoreController class and define the specific order both filters will be executed.
+In this exercise you will add a second Custom Action Filter to the StoreController class and define the specific order in which both filters will be executed.
 
 There are different options to take into account when defining the Filters' execution order, for example, the Order property and the Filters' scope:
 
@@ -291,7 +291,7 @@ You can define a **Scope** for each of the Filters, for example, you could scope
 
 Additionally, each action filter has an Order property which is used to determine the execution order in the scope of the filter.
 
-For more information about Custom Action Filters excecution order, please vistit this MSDN article: (http://msdn.microsoft.com/en-us/library/dd381609.aspx).
+For more information about Custom Action Filters excecution order, please visit this MSDN article: (http://msdn.microsoft.com/en-us/library/dd381609.aspx).
 
 <a name="Ex2Task1" />
 #### Task 1: Creating a new Custom Action Filter ####
@@ -318,7 +318,7 @@ In this task, you will create a new Custom Action Filter to inject into the Stor
 
 1. Open **MyNewCustomActionFilter.cs** and add a reference to **System.Web.Mvc** and the **MvcMusicStore.Models** namespace:
 
-	(Code Snippet - _MVC4 Custom Action Filters - Ex2-MyNewCustomActionFilterNamespaces_ - CS)
+	(Code Snippet - _MVC4 Custom Action Filters - Ex2-MyNewCustomActionFilterNamespaces_)
 
 	<!-- mark:5-6 -->
 	````C#
@@ -332,7 +332,7 @@ In this task, you will create a new Custom Action Filter to inject into the Stor
 
 1. Replace the default class declaration with the following code.
 
-	(Code Snippet - _MVC4 Custom Action Filters - Ex2-MyNewCustomActionFilterClass - CS)
+	(Code Snippet - _MVC4 Custom Action Filters - Ex2-MyNewCustomActionFilterClass_)
 
 	<!-- mark:1-23 -->
 	````C#
@@ -395,7 +395,7 @@ In this task, you will add a new custom filter into the StoreController Class an
 
 1. Now, run the application in order to see how these two Custom Action Filters work. To do this, press **F5** and wait until the application starts.
 
-1. Browse to **/ActionLog** to see log view initial state. If you completed the previous exercise it should show a few rows registered by the **CustomActionFilter**.
+1. Browse to **/ActionLog** to see log view initial state.
 
  	![Log tracker status before page activity](./images/Log-tracker-status-before-page-activity.png?raw=true "Log tracker status before page activity")
  

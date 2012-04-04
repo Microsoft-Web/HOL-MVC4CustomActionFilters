@@ -5,9 +5,9 @@
 <a name="Overview" />
 ## Overview ##
 
-ASP.NET MVC provides Action Filters for performing logic either before an action method is called or after its run. Action Filters are custom attributes that provide a declarative means to add pre-action and post-action behavior to controller action methods.
+ASP.NET MVC provides Action Filters for executing filtering logic either before or after an action method is called. Action Filters are custom attributes that provide declarative means to add pre-action and post-action behavior to the controller's action methods.
 
-In this Hands-on Lab you will create a custom action filter attribute into MVC Music Store solution to catch controller's requests and log site activity into a database table. You will be able to add your logging filter by injection to any controller or action.  Finally, you will see the log view that shows a visit list.
+In this Hands-on Lab you will create a custom action filter attribute into MVC Music Store solution to catch controller's requests and log the activity of a site into a database table. You will be able to add your logging filter by injection to any controller or action.  Finally, you will see the log view that shows the list of visitors.
 
 > **Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC.** If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC Fundamentals** Hand-on Lab.
 
@@ -283,7 +283,7 @@ In this task, you will test that the logging filter is working. You will start t
 
 In this exercise you will add a second Custom Action Filter to the StoreController class and define the specific order in which both filters will be executed.
 
-There are different options to take into account when defining the Filters' execution order, for example, the Order property and the Filters' scope:
+There are different options to take into account when defining the Filters' execution order. For example, the Order property and the Filters' scope:
 
 You can define a **Scope** for each of the Filters, for example, you could scope all the Action Filters to run within the **Controller Scope**, and all Authorization Filters to run in **Global scope**. The scopes have a defined execution order.
 
@@ -294,7 +294,7 @@ For more information about Custom Action Filters execution order, please visit t
 <a name="Ex2Task1" />
 #### Task 1: Creating a new Custom Action Filter ####
 
-In this task, you will create a new Custom Action Filter to inject into the StoreController class and learn how to manage the execution order of the filters.
+In this task, you will create a new Custom Action Filter to inject into the StoreController class, learning how to manage the execution order of the filters.
 
 1. Open the begin solution **MvcMusicStore.sln** at **Source\Ex02-ManagingMultipleAF\Begin**. You can also continue using the End solution you obtained by completing Exercise 1.
 
@@ -496,8 +496,8 @@ In this task, you will learn how to manage the filters' execution order by using
 
 By completing this Hands-On Lab you have learned how to extend an action filter to execute custom actions. You have also learned how to inject any filter to your page controllers. The following concepts were used:
 
-- How to create Custom Action filters with MVC ActionFilterAttribute class
+- How to create Custom Action filters with the MVC ActionFilterAttribute class
 
 - How to inject filters into MVC controllers
 
-- How to manage filters ordering using Order property
+- How to manage filter ordering using the Order property

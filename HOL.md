@@ -225,7 +225,7 @@ It is also possible to intercept a specific controller method.
 	
 	        public ActionResult Index()
 	        {
-	            // Create list of genres
+	            // Retrieve the list of genres
 	...
 	````
 

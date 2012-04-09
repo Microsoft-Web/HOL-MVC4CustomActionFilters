@@ -9,7 +9,7 @@ ASP.NET MVC provides Action Filters for executing filtering logic either before 
 
 In this Hands-on Lab you will create a custom action filter attribute into MVC Music Store solution to catch controller's requests and log the activity of a site into a database table. You will be able to add your logging filter by injection to any controller or action.  Finally, you will see the log view that shows the list of visitors.
 
-> **Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC.** If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC Fundamentals** Hand-on Lab.
+> **Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC.** If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC Fundamentals** Hands-on Lab.
 
 <a name="Objectives" />
 ### Objectives ###

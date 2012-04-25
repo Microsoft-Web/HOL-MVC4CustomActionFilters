@@ -2,7 +2,7 @@
 <Lab xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/ContentFramework.Core.Models">
   <Id>ASPNETMVC4CustomActionFilters</Id>
   <Author>
-    <Name>.</Name>
+    <Name></Name>
   </Author>
   <Description>In this Hands-on Lab, you will use custom filters to log your site activity. To achieve that, in the proposed exercise you will create a custom filter attribute that will work with any specified controller. That filter will catch controller's requests, and save them into a database table. Through a log view you will be able to see the list of visits that each filtered controller had</Description>  
   <Document ConversionType="Html">.\HOL.md</Document>

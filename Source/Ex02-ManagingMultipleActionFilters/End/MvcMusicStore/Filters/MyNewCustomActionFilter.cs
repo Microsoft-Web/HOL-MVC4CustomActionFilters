@@ -24,7 +24,7 @@ namespace MvcMusicStore.Filters
                 DateTime = filterContext.HttpContext.Timestamp
             };
 
-            storeDB.AddToActionLog(log);
+            storeDB.ActionLogs.Add(log);
             storeDB.SaveChanges();
 
             base.OnActionExecuting(filterContext);

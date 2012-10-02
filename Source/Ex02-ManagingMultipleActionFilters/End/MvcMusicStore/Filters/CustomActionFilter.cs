@@ -9,7 +9,6 @@ namespace MvcMusicStore.Filters
 {
     public class CustomActionFilter : ActionFilterAttribute, IActionFilter
     {
-
         void IActionFilter.OnActionExecuting(ActionExecutingContext filterContext)
         {
             // TODO: Add your acction filter's tasks here
@@ -25,7 +24,7 @@ namespace MvcMusicStore.Filters
                 DateTime = filterContext.HttpContext.Timestamp
             };
 
-            storeDB.AddToActionLog(log);
+            storeDB.ActionLogs.Add(log);
             storeDB.SaveChanges();
 
             base.OnActionExecuting(filterContext);

@@ -1,64 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-using MvcMusicStore.ViewModels;
-using MvcMusicStore.Models;
-
-namespace MvcMusicStore.Controllers
+﻿namespace MvcMusicStore.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
+    using MvcMusicStore.Models;
+
     public class StoreController : Controller
     {
-        MusicStoreEntities storeDB = new MusicStoreEntities();
+        private MusicStoreEntities storeDB = new MusicStoreEntities();
 
-        //
         // GET: /Store/
-
-        public ActionResult Index()
+        public ActionResult Details(int id)
         {
-            // Retrieve the list of genres
-            var genres = from genre in storeDB.Genres
-                         select genre.Name;
-
-            // Create your view model
-            var viewModel = new StoreIndexViewModel
+            var album = this.storeDB.Albums.Find(id);
+            if (album == null)
             {
-                Genres = genres.ToList(),
-                NumberOfGenres = genres.Count()
-            };
+                return this.HttpNotFound();
+            }
 
-            return View(viewModel);
+            return this.View(album);
         }
-
-        //
-        // GET: /Store/Browse?genre=Disco
 
         public ActionResult Browse(string genre)
         {
             // Retrieve Genre and its Associated Albums from database
-
-            var genreModel = storeDB.Genres.Include("Albums")
+            var genreModel = this.storeDB.Genres.Include("Albums")
                 .Single(g => g.Name == genre);
 
-            var viewModel = new StoreBrowseViewModel()
-            {
-                Genre = genreModel,
-                Albums = genreModel.Albums.ToList()
-            };
-
-            return View(viewModel);
+            return this.View(genreModel);
         }
 
-        //
-        // GET: /Store/Details/5
-
-        public ActionResult Details(int id)
+        public ActionResult Index()
         {
-            var album = storeDB.Albums.Single(a => a.AlbumId == id);
+            var genres = this.storeDB.Genres;
+            return this.View(genres);
+        }
 
-            return View(album);
+        // GET: /Store/GenreMenu
+        [ChildActionOnly]
+        public ActionResult GenreMenu()
+        {
+            var genres = this.storeDB.Genres.ToList();
+
+            return this.PartialView(genres);
         }
     }
 }

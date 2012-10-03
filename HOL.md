@@ -428,7 +428,7 @@ In this task, you will learn how to manage the filters' execution order by using
 	_Action log with activity logged_
 
 <a name="Ex2Task4" />
-#### Task 3: Registering Filters Globally ####
+#### Task 4: Registering Filters Globally ####
 
 In this task, you will update the solution to register the new filter (**MyNewCustomActionFilter**) as a global filter. By doing this, it will be triggered by all the actions perfomed in the application and not only in the StoreController ones as in the previous task.
 

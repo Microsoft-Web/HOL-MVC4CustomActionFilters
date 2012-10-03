@@ -1,4 +1,5 @@
-﻿<a name="HOLTitle" />
+﻿<a name="HOLTop" />
+
 # ASP.NET MVC 4 Custom Action Filters #
 ---
 
@@ -9,7 +10,7 @@ ASP.NET MVC provides Action Filters for executing filtering logic either before 
 
 In this Hands-on Lab you will create a custom action filter attribute into MVC Music Store solution to catch controller's requests and log the activity of a site into a database table. You will be able to add your logging filter by injection to any controller or action.  Finally, you will see the log view that shows the list of visitors.
 
-> **Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC**. If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC Fundamentals** Hands-on Lab.
+> **Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC**. If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC 4 Fundamentals** Hands-on Lab.
 
 <a name="Objectives" />
 ### Objectives ###
@@ -48,7 +49,6 @@ This Hands-On Lab is comprised by the following exercises:
 1. [Exercise 1: Logging actions](#Exercise1)
 1. [Exercise 2: Managing Multiple Action Filters](#Exercise2)
 
- 
 Estimated time to complete this lab: **30 minutes**.
 
 >**Note:** Each exercise is accompanied by an **End** folder containing the resulting solution you should obtain after completing the exercises. You can use this solution as a guide if you need additional help working through the exercises.
@@ -102,8 +102,8 @@ In this task you will create a custom filter attribute class that will contain t
 
 
 1. Open the **Begin** solution located at **Source/Ex02-LoggingActions/Begin/** folder.
-	1. You will need to download some missing NuGet packages before continue. To do this, click **Project** and select **Manage NuGet Packages**.
-	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+	1. You will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
 	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
@@ -278,9 +278,9 @@ In this task, you will create a new Custom Action Filter to inject into the Stor
 
 
 1.	Open the **Begin** solution located at **Source/Ex02-ManagingMultipleAF/Begin/** folder. Otherwise, you might continue using the **End** solution obtained by completing the previous exercise.
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, click **Project** and select **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 
-	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
@@ -479,6 +479,8 @@ In this task, you will update the solution to register the new filter (**MyNewCu
  	![Action log with activity logged](./images/Action-log-with-activity-logged5.png?raw=true "Action log with activity logged")
  
 	_Action log with global activity logged_
+
+>**Note:** Additionally, you can deploy this application to Windows Azure Web Sites following [Appendix B: Publishing an ASP.NET MVC 4 Application using Web Deploy](#AppendixB).
 
 ---
 

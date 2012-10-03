@@ -4,9 +4,9 @@
 
 ### Introduction ###
 
-Hands-On Labs are sets of step-by-step guides that are designed to help you learn ASP.NET MVC 4.  Each Lab provides instructions to guide you through the process of developing a complete application.
+These Hands-On Labs are sets of step-by-step guides that are designed to help you learn Visual Studio 2012, ASP.NET 4.5 WebForms and ASP.NET MVC 4. Each Lab provides instructions to guide you through the process of developing a Web application.
 
-In this Hands-on Lab, you will use custom filters to log your site activity. To achieve that, in the proposed exercise you will create a custom filter attribute that will work with any specified controller. That filter will catch controller's requests, and save them into a database table. Through a log view you will be able to see the list of visits that each filtered controller had.
+In this Hands-on Lab you will create a custom action filter attribute into MVC Music Store solution to catch controller's requests and log the activity of a site into a database table. You will be able to add your logging filter by injection to any controller or action.  Finally, you will see the log view that shows the list of visitors.
 
 ### Repository Structure ###
 

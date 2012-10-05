@@ -31,6 +31,7 @@
             {
                 storeDB.ActionLogs.Remove(log);
             }
+
             storeDB.SaveChanges();
         }
     }

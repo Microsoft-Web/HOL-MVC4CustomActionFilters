@@ -27,7 +27,7 @@ namespace MvcMusicStore.Filters
             storeDB.ActionLogs.Add(log);
             storeDB.SaveChanges();
 
-            base.OnActionExecuting(filterContext);
+            this.OnActionExecuting(filterContext);
         }
     }
 }

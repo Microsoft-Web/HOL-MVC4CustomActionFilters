@@ -6,17 +6,14 @@
 
     public class ActionLogController : Controller
     {
-        MusicStoreEntities storeDB = new MusicStoreEntities();
+        private MusicStoreEntities storeDB = new MusicStoreEntities();
 
-        //
         // GET: /ActionLog/
-
         public ActionResult Index()
         {
-            var model = storeDB.ActionLogs.OrderByDescending(al => al.DateTime).ToList();
+            var model = this.storeDB.ActionLogs.OrderByDescending(al => al.DateTime).ToList();
 
-            return View(model);
+            return this.View(model);
         }
-
     }
 }

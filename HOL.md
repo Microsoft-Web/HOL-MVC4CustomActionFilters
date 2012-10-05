@@ -56,11 +56,11 @@ Estimated time to complete this lab: **30 minutes**.
 <a name="Exercise1" /> 
 ### Exercise 1: Logging Actions ###
 
-In this exercise, you will learn how to create a custom action log filter by using MVC 4 Filter Providers.  For that purpose you will apply a logging filter to the MusicStore site that will record all the activities in the selected controllers.
+In this exercise, you will learn how to create a custom action log filter by using ASP.NET MVC 4 Filter Providers.  For that purpose you will apply a logging filter to the MusicStore site that will record all the activities in the selected controllers.
 
-The filter will extend **ActionFilterAttributeClass** and override **OnActionExecuting** method to catch each request and then perform the logging actions. The context information about HTTP requests, executing methods, results and parameters will be provided by MVC **ActionExecutingContext** class**.**
+The filter will extend **ActionFilterAttributeClass** and override **OnActionExecuting** method to catch each request and then perform the logging actions. The context information about HTTP requests, executing methods, results and parameters will be provided by ASP.NET MVC **ActionExecutingContext** class**.**
 
-> **Note:** MVC 4 also has default filters providers you can use without creating a custom filter. MVC 4 provides the following types of filters:
+> **Note:** ASP.NET MVC 4 also has default filters providers you can use without creating a custom filter. ASP.NET MVC 4 provides the following types of filters:
 > 
 > - **Authorization** filter, which makes security decisions about whether to execute an action method, such as performing authentication or validating properties of the request. 
 > - **Action** filter, which wraps the action method execution. This filter can perform additional processing, such as providing extra data to the action method, inspecting the return value, or canceling execution of the action method
@@ -78,7 +78,7 @@ This Music Store solution has a new data model table for site logging, **ActionL
  
 _Data model - ActionLog table_
 
-The solution provides an MVC View for the Action log that can be found at **MvcMusicStores/Views/ActionLog**:
+The solution provides an ASP.NET MVC View for the Action log that can be found at **MvcMusicStores/Views/ActionLog**:
 
  ![Action Log view](./images/Action-Log-view.png?raw=true "Action Log view")
  
@@ -89,7 +89,7 @@ With this given structure, all the work will be focused on interrupting controll
 <a name="Ex1Task1" />
 #### Task 1 - Creating a Custom Filter to Catch a Controller's Request ####
 
-In this task you will create a custom filter attribute class that will contain the logging logic. For that purpose you will extend MVC **ActionFilterAttribute** Class and implement the interface **IActionFilter**.
+In this task you will create a custom filter attribute class that will contain the logging logic. For that purpose you will extend ASP.NET MVC **ActionFilterAttribute** Class and implement the interface **IActionFilter**.
 
 > **Note:** The **ActionFilterAttribute** is the base class for all the attribute filters. It provides the following methods to execute a specific logic after and before controller action's execution:
 >
@@ -101,7 +101,7 @@ In this task you will create a custom filter attribute class that will contain t
 > By overriding any of these methods into a derived class, you can execute your own filtering code.
 
 
-1. Open the **Begin** solution located at **Source/Ex02-LoggingActions/Begin/** folder.
+1. Open the **Begin** solution located at **Source/Ex01-LoggingActions/Begin/** folder.
 	1. You will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
@@ -114,7 +114,7 @@ In this task you will create a custom filter attribute class that will contain t
 
 1. Open **CustomActionFilter.cs** and add a reference to **System.Web.Mvc** and  **MvcMusicStore.Models** namespaces:
 
-	(Code Snippet - _MVC 4 Custom Action Filters - Ex1-CustomActionFilterNamespaces_)
+	(Code Snippet - _ASP.NET MVC 4 Custom Action Filters - Ex1-CustomActionFilterNamespaces_)
 	<!-- mark:5-6 -->
 	````C#
 	using System;
@@ -139,7 +139,7 @@ In this task you will create a custom filter attribute class that will contain t
 
 1. Make **CustomActionFilter** class override the method **OnActionExecuting** and add the necessary logic to log the filter's execution. To do this, add the following highlighted code within **CustomActionFilter** class.
 
-	(Code Snippet - _MVC 4 Custom Action Filters - Ex1-LoggingActions_)
+	(Code Snippet - _ASP.NET MVC 4 Custom Action Filters - Ex1-LoggingActions_)
 
 	<!-- mark:3-22 -->
 	````C#	
@@ -163,7 +163,7 @@ In this task you will create a custom filter attribute class that will contain t
             storeDB.ActionLogs.Add(log);
             storeDB.SaveChanges();
 
-            base.OnActionExecuting(filterContext);
+            this.OnActionExecuting(filterContext);
         }
     }
 	````
@@ -246,6 +246,7 @@ In this task, you will test that the logging filter is working. You will start t
 	> {
 	> 	 storeDB.ActionLogs.Remove(log);
 	> }
+	>
 	> storeDB.SaveChanges();
 	> ````
 
@@ -292,7 +293,7 @@ In this task, you will create a new Custom Action Filter to inject into the Stor
 
 1. Open **MyNewCustomActionFilter.cs** and add a reference to **System.Web.Mvc** and the **MvcMusicStore.Models** namespace:
 
-	(Code Snippet - _MVC 4 Custom Action Filters - Ex2-MyNewCustomActionFilterNamespaces_)
+	(Code Snippet - _ASP.NET MVC 4 Custom Action Filters - Ex2-MyNewCustomActionFilterNamespaces_)
 
 	<!-- mark:5-6 -->
 	````C#
@@ -306,7 +307,7 @@ In this task, you will create a new Custom Action Filter to inject into the Stor
 
 1. Replace the default class declaration with the following code.
 
-	(Code Snippet - _MVC 4 Custom Action Filters - Ex2-MyNewCustomActionFilterClass_)
+	(Code Snippet - _ASP.NET MVC 4 Custom Action Filters - Ex2-MyNewCustomActionFilterClass_)
 
 	<!-- mark:1-23 -->
 	````C#
@@ -330,7 +331,7 @@ In this task, you will create a new Custom Action Filter to inject into the Stor
 			storeDB.ActionLogs.Add(log);
 			storeDB.SaveChanges();
 
-			base.OnActionExecuting(filterContext);
+			this.OnActionExecuting(filterContext);
 	  }
 	}
 	````
@@ -489,9 +490,9 @@ In this task, you will update the solution to register the new filter (**MyNewCu
 
 By completing this Hands-On Lab you have learned how to extend an action filter to execute custom actions. You have also learned how to inject any filter to your page controllers. The following concepts were used:
 
-- How to create Custom Action filters with the MVC ActionFilterAttribute class
+- How to create Custom Action filters with the ASP.NET MVC ActionFilterAttribute class
 
-- How to inject filters into MVC controllers
+- How to inject filters into ASP.NET MVC controllers
 
 - How to manage filter ordering using the Order property
 

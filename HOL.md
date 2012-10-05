@@ -8,7 +8,7 @@
 
 ASP.NET MVC provides Action Filters for executing filtering logic either before or after an action method is called. Action Filters are custom attributes that provide declarative means to add pre-action and post-action behavior to the controller's action methods.
 
-In this Hands-on Lab you will create a custom action filter attribute into MVC Music Store solution to catch controller's requests and log the activity of a site into a database table. You will be able to add your logging filter by injection to any controller or action.  Finally, you will see the log view that shows the list of visitors.
+In this Hands-on Lab you will create a custom action filter attribute into MvcMusicStore solution to catch controller's requests and log the activity of a site into a database table. You will be able to add your logging filter by injection to any controller or action.  Finally, you will see the log view that shows the list of visitors.
 
 > **Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC**. If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC 4 Fundamentals** Hands-on Lab.
 
@@ -548,6 +548,8 @@ This appendix will show you how to create a new web site from the Windows Azure 
 #### Task 1 – Creating a New Web Site from the Windows Azure Portal ####
 
 1. Go to the [Windows Azure Management Portal](https://manage.windowsazure.com/) and sign in using the Microsoft credentials associated with your subscription.
+
+	> **Note:** If you do not have a Windows Azure subscription you can sign up for a 90 days free trial [here](http://aka.ms/aspnet-hol-azure).
 
 	![Log on to Windows Azure portal](images/login.png?raw=true "Log on to Windows Azure portal")
 

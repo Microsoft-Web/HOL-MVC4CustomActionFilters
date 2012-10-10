@@ -101,7 +101,7 @@ In this task you will create a custom filter attribute class that will contain t
 > By overriding any of these methods into a derived class, you can execute your own filtering code.
 
 
-1. Open the **Begin** solution located at **Source/Ex01-LoggingActions/Begin/** folder.
+1. Open the **Begin** solution located at **\Source\Ex01-LoggingActions\Begin** folder.
 	1. You will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
@@ -270,7 +270,7 @@ You can define a **Scope** for each of the Filters, for example, you could scope
 
 Additionally, each action filter has an Order property which is used to determine the execution order in the scope of the filter.
 
-For more information about Custom Action Filters execution order, please visit this MSDN article: (http://msdn.microsoft.com/en-us/library/dd381609.aspx).
+For more information about Custom Action Filters execution order, please visit this MSDN article: (http://msdn.microsoft.com/en-us/library/dd381609%28v=vs.98%29.aspx).
 
 <a name="Ex2Task1" />
 #### Task 1: Creating a new Custom Action Filter ####
@@ -278,7 +278,7 @@ For more information about Custom Action Filters execution order, please visit t
 In this task, you will create a new Custom Action Filter to inject into the StoreController class, learning how to manage the execution order of the filters.
 
 
-1.	Open the **Begin** solution located at **Source/Ex02-ManagingMultipleAF/Begin/** folder. Otherwise, you might continue using the **End** solution obtained by completing the previous exercise.
+1.	Open the **Begin** solution located at **\Source\Ex02-ManagingMultipleActionFilters\Begin** folder. Otherwise, you might continue using the **End** solution obtained by completing the previous exercise.
 	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.

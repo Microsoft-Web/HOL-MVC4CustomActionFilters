@@ -1,6 +1,7 @@
-Before running the End solution of this exercise you will need to download some missing NuGet packages. To do this, follow these steps:
+Before running any of the end solutions provided in this Hands-on lab you need to ensure NuGet Package Restore is enabled. 
 
-1. Open the End.sln file within End folder.
-2. Click Project and select Manage NuGet Packages.
-3. In the Manage NuGet Packages page, click Restore in order to download missing packages.
-4. Finally, build the solution by clicking Build | Build Solution.
+1. Click the "Tools" menu and select "Options".
+2. In the "Options" dialog, select the "Package Manager" settings group.
+3. Ensure the checkbox labeled "Allow NuGet to download missing packages during build" is checked.
+
+For more information see: http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages
